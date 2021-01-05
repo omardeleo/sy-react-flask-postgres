@@ -21,7 +21,7 @@ const createCounter = async () => {
 }
 
 /* GET home page. */
-router.get('/api/v1/', async function(req, res, next) {
+router.get('/express/v1/', async function(req, res, next) {
   const counters = await db.Counter.findAll();
   const counter = counters.length
     ? await incrementCounter(counters[0])
