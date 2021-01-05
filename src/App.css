@@ -17,3 +17,8 @@
     transform: rotate(360deg);
   }
 }
+
+pre[class*="language-"] > code {
+	position: relative !important;
+  display: block !important;
+}

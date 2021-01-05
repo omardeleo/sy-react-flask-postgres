@@ -3,14 +3,15 @@ import flaskLogo from './flask.png';
 import expressLogo from './express.png';
 import djangoLogo from './django.png';
 import './App.css';
-import { useState } from 'react';
+import Prism from 'prismjs';
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.min"
+import { useState, useEffect } from 'react';
 
 import {
-  Box,
   Container,
   Link,
   List,
-  Typography,
   Card,
   Chip,
   ListItem,
@@ -39,7 +40,26 @@ const useStyles = makeStyles({
   }
 });
 
+const codeBlock_1 =`65 |  const theme = createMuiTheme({ 
+66 |    palette: {
+67 |      type: 'dark',
+68 |    }
+69 |  });`
+
+const codeBlock_2 =`65 |  const theme = createMuiTheme({ 
+66 |    palette: {
+67 |      type: 'light',
+68 |    }
+69 |  });`
+
+const codeBlock_3 = `100 | seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>) `;
+
+const codeBlock_4 = `100 | seasons.map(season => <Chip label={season} />) `;
+
 function App() {
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
   const classes = useStyles();
 
   const theme = createMuiTheme({
@@ -49,6 +69,7 @@ function App() {
   });
 
   const seasons = ["Winter", "Spring", "Summer", "Fall"]
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,26 +84,14 @@ function App() {
           <p>Modify the appearance of your app by using Material-UI's built-in themes, or 
       by creating a custom theme.</p>
       <p>To switch from <b>Dark Mode</b> to <b>Light Mode</b>, open <code>`src/App.js`</code> and replace the following code:</p>
-          <pre><code>
-             {
-             `const theme = createMuiTheme({
-    palette: {
-      type: 'dark',
-    }
-});`
-}
+          <pre className="line-numbers"><code className="language-js">
+             { codeBlock_1 }
             </code></pre>
             <p>with:</p>
-            <pre><code>
-             {
-             `const theme = createMuiTheme({
-    palette: {
-      type: 'light',
-    }
-});`
-}
+            <pre className="line-numbers"><code className="language-js">
+             { codeBlock_2 }
             </code></pre>
-            <p><a href="https://material-ui.com/customization/theming/" target="_blank">Click here</a> to learn more about Material-UI themes </p>
+            <p><Link color="secondary" href="https://material-ui.com/customization/theming/" target="_blank">Click here</Link> to learn more about Material-UI themes.</p>
         </Card>
         <Card className={classes.card}>
           <h2>Use Material-UI components</h2>
@@ -91,12 +100,12 @@ function App() {
             { seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>) }
           </List>
           <p>To render list items as chips, open <code>`src/App.js`</code> and replace the following code:</p>
-          <pre><code>
-             { `seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>)` }
+          <pre className="line-numbers"><code className="language-js">
+             { codeBlock_3 }
             </code></pre>
             <p>with:</p>
-            <pre><code>
-             { `seasons.map(season => <Chip label={season} />)` }
+            <pre className="line-numbers"><code className="language-js">
+             { codeBlock_4 }
             </code></pre>
           <p>Read the Material-UI docs to learn more about components: https://material-ui.com/.</p>
         </Card>
