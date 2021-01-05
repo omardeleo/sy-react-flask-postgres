@@ -1,12 +1,8 @@
 import logo from './logo.svg';
-import flaskLogo from './flask.png';
-import expressLogo from './express.png';
-import djangoLogo from './django.png';
+
 import './App.css';
 import Prism from 'prismjs';
 import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min"
-import { useState, useEffect } from 'react';
 
 import {
   Container,
@@ -21,6 +17,8 @@ import {
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import ConnectCard from "./ConnectCard";
+
 const useStyles = makeStyles({
   container: {
     display: "flex",
@@ -34,7 +32,6 @@ const useStyles = makeStyles({
     width: "350px",
     height: "700px",
     padding: "0 15px",
-    // marginRight: "15px"
   },
   cardHeader: {
     marginBottom: "40px"
@@ -58,9 +55,6 @@ const codeBlock_3 = `100 | seasons.map(season => <ListItem button><ListItemText 
 const codeBlock_4 = `100 | seasons.map(season => <Chip label={season} />) `;
 
 function App() {
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [])
   const classes = useStyles();
 
   const theme = createMuiTheme({
@@ -71,11 +65,7 @@ function App() {
 
   const seasons = ["Winter", "Spring", "Summer", "Fall"]
 
-const code3 = `Hi! I'm an Express server.
 
-I'm running on port 3001.
-I've been pinged 6 times.
-Last pinged on 1/5/21 at 3:00:01PM.`
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -112,22 +102,9 @@ Last pinged on 1/5/21 at 3:00:01PM.`
             <pre><code className="language-js">
              { codeBlock_4 }
             </code></pre>
-          <p>Read the Material-UI docs to learn more about components: https://material-ui.com/.</p>
+          <p>Read the Material-UI docs to learn more about components: <Link color="secondary" href="https://material-ui.com/" target="_blank" rel="noopener">https://material-ui.com/.</Link></p>
         </Card>
-        <Card className={classes.card}>
-          <h2>Connect to any server</h2>
-           <p>You can connect this React frontend to a number of different backend frameworks.</p>
-          <p>Some popular backend frameworks are:</p>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Box mb="5px"><img width="100px" src={expressLogo} /></Box>
-            <Box mb="5px"><img width="100px" src={flaskLogo} /></Box>
-          <Box mb="5px"><img width="100px" src={djangoLogo} /></Box>
-            </Box>
-          <p>Click on any of the frameworks above to make a request to that server, and see the response below.</p>
-          <pre><code className="language-html">
-            {code3}
-            </code></pre>
-        </Card>
+        <ConnectCard classes={classes} />
         <Card className={classes.card}><h2>Deploy your app</h2>
          <p>Easily deploy your app using Shipyard: https://shipyard.build/</p>
       <p>Alternatively, read this guide on how to deploy a containerized web app: https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app</p></Card>
