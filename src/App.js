@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 
 import {
   Container,
+  Box,
   Link,
   List,
   Card,
@@ -70,7 +71,11 @@ function App() {
 
   const seasons = ["Winter", "Spring", "Summer", "Fall"]
 
+const code3 = `Hi! I'm an Express server.
 
+I'm running on port 3001.
+I've been pinged 6 times.
+Last pinged on 1/5/21 at 3:00:01PM.`
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -84,11 +89,11 @@ function App() {
           <p>Modify the appearance of your app by using Material-UI's built-in themes, or 
       by creating a custom theme.</p>
       <p>To switch from <b>Dark Mode</b> to <b>Light Mode</b>, open <code>`src/App.js`</code> and replace the following code:</p>
-          <pre className="line-numbers"><code className="language-js">
+          <pre><code className="language-js">
              { codeBlock_1 }
             </code></pre>
             <p>with:</p>
-            <pre className="line-numbers"><code className="language-js">
+            <pre><code className="language-js">
              { codeBlock_2 }
             </code></pre>
             <p><Link color="secondary" href="https://material-ui.com/customization/theming/" target="_blank">Click here</Link> to learn more about Material-UI themes.</p>
@@ -100,23 +105,28 @@ function App() {
             { seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>) }
           </List>
           <p>To render list items as chips, open <code>`src/App.js`</code> and replace the following code:</p>
-          <pre className="line-numbers"><code className="language-js">
+          <pre><code className="language-js">
              { codeBlock_3 }
             </code></pre>
             <p>with:</p>
-            <pre className="line-numbers"><code className="language-js">
+            <pre><code className="language-js">
              { codeBlock_4 }
             </code></pre>
           <p>Read the Material-UI docs to learn more about components: https://material-ui.com/.</p>
         </Card>
         <Card className={classes.card}>
-          <h2>Connect to server</h2>
-           <p>Connect this React frontend to a server in order to access your own data.</p>
+          <h2>Connect to any server</h2>
+           <p>You can connect this React frontend to a number of different backend frameworks.</p>
           <p>Some popular backend frameworks are:</p>
-          <img width="100px" src={flaskLogo} />
-           <img width="100px" src={expressLogo} />
-            <img width="100px" src={djangoLogo} />
-          <p>Read this guide on how to add a backend to your React project: https://add-backend-guide.com</p>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Box mb="5px"><img width="100px" src={expressLogo} /></Box>
+            <Box mb="5px"><img width="100px" src={flaskLogo} /></Box>
+          <Box mb="5px"><img width="100px" src={djangoLogo} /></Box>
+            </Box>
+          <p>Click on any of the frameworks above to make a request to that server, and see the response below.</p>
+          <pre><code className="language-html">
+            {code3}
+            </code></pre>
         </Card>
         <Card className={classes.card}><h2>Deploy your app</h2>
          <p>Easily deploy your app using Shipyard: https://shipyard.build/</p>
