@@ -7,10 +7,10 @@ and [Shipyard](https://shipyard.build) out of the box.
 
 - [React](https://github.com/facebook/react/) - JavaScript library for building user interfaces
 - [Material-UI](https://github.com/mui-org/material-ui) - React components for faster and simpler web development
-- Jinja + Bootstrap (from CDN)
-- uWSGI entrypoint
-- Celery (with example heartbeat task configured)
-- Flask-SQLAlchemy
+- [Jinja](https://github.com/pallets/jinja) + [Bootstrap](https://pythonhosted.org/Flask-Bootstrap/) (from CDN)
+- [uWSGI](https://github.com/unbit/uwsgi) - entrypoint
+- [Celery](https://github.com/celery/celery) (with example heartbeat task configured)
+- [Flask-SQLAlchemy](https://github.com/pallets/flask-sqlalchemy)
 
 ## Dependencies
 
