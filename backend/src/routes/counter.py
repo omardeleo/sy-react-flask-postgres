@@ -6,6 +6,8 @@ from flask import (
 
 from src.models import Counter
 
+import datetime
+
 
 blueprint = Blueprint('counter', __name__)
 
@@ -14,6 +16,11 @@ blueprint = Blueprint('counter', __name__)
 def index():
     counter = Counter.get_create(label='Test')
     counter.increment()
-    # return render_template('counter.html', counters=Counter.list())
-    response = f'Hi! I\'m a Flask server.\n I\'m running on port 8080. I\'ve been pinged {counter.count} times'
+    date = datetime.datetime.now()
+    dateStr = date.strftime('%c')
+    response = f"""Hi! I\'m a Flask server.\n
+I\'m running on port 8080.
+I\'ve been pinged {counter.count} times.
+Most recent ping on {dateStr}."""
+
     return jsonify(response=response)

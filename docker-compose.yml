@@ -1,47 +1,47 @@
 version: '3.8'
 
 services:
-  react:
+  frontend:
     labels:
       shipyard.route: '/'
-    build: 'react'
+    build: 'frontend'
     environment:
       CI: 'true'
       DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
     volumes:
-      - './react/src:/app/src'
-      - './react/public:/app/public'
+      - './frontend/src:/app/src'
+      - './frontend/public:/app/public'
     ports:
       - '3000:3000'
 
-  flask:
+  backend:
     labels:
       shipyard.route: '/'
-    build: 'flask'
+    build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
       FLASK_DEBUG: '1'
     volumes:
-      - './flask/filesystem/entrypoints:/entrypoints:ro'
-      - './flask/migrations:/srv/migrations'
-      - './flask/src:/srv/src:ro'
+      - './backend/filesystem/entrypoints:/entrypoints:ro'
+      - './backend/migrations:/srv/migrations'
+      - './backend/src:/srv/src:ro'
     ports:
       - '8080:8080'
 
   worker:
     labels:
       shipyard.before: 'poetry run flask db upgrade'
-    build: 'flask'
+    build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
       FLASK_DEBUG: '1'
     command: '/entrypoints/worker.sh'
     volumes:
-      - './flask/filesystem/entrypoints:/entrypoints:ro'
-      - './flask/migrations:/srv/migrations'
-      - './flask/src:/srv/src:ro'
+      - './backend/filesystem/entrypoints:/entrypoints:ro'
+      - './backend/migrations:/srv/migrations'
+      - './backend/src:/srv/src:ro'
 
   postgres:
     image: 'postgres:9.6-alpine'
