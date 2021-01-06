@@ -62,7 +62,7 @@ function App() {
           className={classes.box}
           display="flex"
         >
-          <Tooltip title="Replace file at `/frontend/src/logo.png` with your logo file!">
+          <Tooltip title={<h3>Replace file at <code>`/frontend/src/logo.png`</code> with your logo file!</h3>}>
             <Box mt="20px" display="flex" flexDirection="column" alignItems="center">
               <img className={classes.img} src={logo} />
               <Typography variant="caption">Hover over logo to replace</Typography>
