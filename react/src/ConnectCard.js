@@ -24,7 +24,7 @@ function ConnectCard(props) {
   const [data, setData] = useState([]);
 
   const fetchData = () => {
-    fetch("/express/v1/")
+    fetch("/api/v1/")
       .then(res => res.json())
       .then(
         (result) => {
@@ -51,7 +51,7 @@ function ConnectCard(props) {
       <p>You can connect this React frontend to a number of different backend frameworks.</p>
       <p>Some popular backend frameworks are:</p>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Box mb="5px" onClick={fetchData}><img width="100px" src={expressLogo} /></Box>
+        <Box mb="5px" onClick={fetchData}><img width="100px" src={flaskLogo} /></Box>
       </Box>
       <p>Click on any of the frameworks above to make a request to that server, and see the response below.</p>
     { data.response ? <ResponseBlock response={data.response} /> : ""}

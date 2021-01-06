@@ -14,10 +14,10 @@ services:
     ports:
       - '3000:3000'
 
-  web:
+  flask:
     labels:
       shipyard.route: '/'
-    build: '.'
+    build: 'flask'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
@@ -29,10 +29,10 @@ services:
     ports:
       - '8080:8080'
 
-  flask:
+  worker:
     labels:
       shipyard.before: 'poetry run flask db upgrade'
-    build: '.'
+    build: 'flask'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
