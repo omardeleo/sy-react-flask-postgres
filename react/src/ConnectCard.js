@@ -52,8 +52,6 @@ function ConnectCard(props) {
       <p>Some popular backend frameworks are:</p>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box mb="5px" onClick={fetchData}><img width="100px" src={expressLogo} /></Box>
-        <Box mb="5px" onClick={() => alert("flask")}><img width="100px" src={flaskLogo} /></Box>
-        <Box mb="5px" onClick={() => alert("django")}><img width="100px" src={djangoLogo} /></Box>
       </Box>
       <p>Click on any of the frameworks above to make a request to that server, and see the response below.</p>
     { data.response ? <ResponseBlock response={data.response} /> : ""}
