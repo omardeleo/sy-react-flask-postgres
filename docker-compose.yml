@@ -16,7 +16,7 @@ services:
 
   backend:
     labels:
-      shipyard.route: '/'
+      shipyard.route: '/api'
     build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
