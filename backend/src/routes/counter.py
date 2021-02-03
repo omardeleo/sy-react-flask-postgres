@@ -12,7 +12,7 @@ import datetime
 blueprint = Blueprint('counter', __name__)
 
 
-@blueprint.route('/')
+@blueprint.route('/api/v1/')
 def index():
     counter = Counter.get_create(label='Test')
     counter.increment()
