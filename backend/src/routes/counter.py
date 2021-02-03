@@ -12,6 +12,11 @@ import datetime
 blueprint = Blueprint('counter', __name__)
 
 
+@blueprint.route('/')
+def index():
+    response = "Flask server"
+    return jsonify(response=response)
+
 @blueprint.route('/api/v1/')
 def index():
     counter = Counter.get_create(label='Test')
