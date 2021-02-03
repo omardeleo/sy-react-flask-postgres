@@ -18,7 +18,7 @@ def index():
     return jsonify(response=response)
 
 @blueprint.route('/api/v1/')
-def index():
+def api():
     counter = Counter.get_create(label='Test')
     counter.increment()
     date = datetime.datetime.now()
