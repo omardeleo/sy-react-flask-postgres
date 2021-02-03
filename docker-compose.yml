@@ -1,22 +1,10 @@
 version: '3.8'
 
 services:
-  frontend:
-    labels:
-      shipyard.route: '/'
-    build: 'frontend'
-    environment:
-      CI: 'true'
-      DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
-    volumes:
-      - './frontend/src:/app/src'
-      - './frontend/public:/app/public'
-    ports:
-      - '3000:3000'
 
   backend:
     labels:
-      shipyard.route: '/api'
+      shipyard.route: '/'
     build: 'backend'
     environment:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
