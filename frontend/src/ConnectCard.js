@@ -59,13 +59,13 @@ function ConnectCard(props) {
       <p>Replace the code below:</p>
       <pre>
         <code className="language-js">
-          { `35 |  res.json({response: response});` }
+          { `31 |  return jsonify(response=response)` }
         </code>
       </pre>
       <p>with:</p>
       <pre>
         <code className="language-js">
-          { `35 |  res.json({response: "I just updated the response message!"})` }
+          { `31 |  return jsonify(response="I just updated the response message!"})` }
         </code>
       </pre>
     </Card>
