@@ -49,23 +49,23 @@ function ConnectCard(props) {
   } else return (
     <Card className={classes.card}>
       <h2 className={classes.cardHeader}>Connect to a server</h2>
-      <p>This React frontend is connected to a Express backend.</p>
+      <p>This React frontend is connected to a Flask backend.</p>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Box><img width="100px" src={flaskLogo} /></Box>
+        <Box><img width="100px" src={flaskLogo} alt="Flask Logo"/></Box>
       </Box>
       <p>Below is the response from the server:</p>
       <ResponseBlock response={data.response} />
-      <p>Update <code>`backend/src/routes/counter.py`</code>, save the file, then refresh this page to <b>see a new message.</b></p>
+      <p>Update <code>`backend/src/routes/index.js`</code>, save the file, then refresh this page to <b>see a new message.</b></p>
       <p>Replace the code below:</p>
       <pre>
         <code className="language-js">
-          { `31 |  return jsonify(response=response)` }
+          { `35 |  res.json({response: response});` }
         </code>
       </pre>
       <p>with:</p>
       <pre>
         <code className="language-js">
-          { `31 |  return jsonify(response="I just updated the response message!"})` }
+          { `35 |  res.json({response: "I just updated the response message!"})` }
         </code>
       </pre>
     </Card>
