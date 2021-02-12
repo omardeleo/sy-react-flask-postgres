@@ -14,14 +14,12 @@ function UploadCard(props) {
       .then(
         (result) => {
           setIsLoaded(true);
-          console.log(result)
           const bucket = result['Name'];
-          console.log(bucket)
           const filenames = result['Contents'] ?
             result['Contents']
               .map(file => `${bucket}/${file['Key']}`)
               .reverse() :
-              [];
+            [];
           setData(filenames);
         },
         (error) => {
@@ -46,8 +44,7 @@ function UploadCard(props) {
         method: 'POST',
         body: formData
       })
-      const thing = await response.json()
-      console.log(thing)
+      await response.json();
       inputEl.current.value = "";
       fetchData();
     } catch (error) {
