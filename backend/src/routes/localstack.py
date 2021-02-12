@@ -1,7 +1,8 @@
 import uuid
 import os
-
+import time
 import localstack_client.session
+
 from flask import Blueprint
 from flask import jsonify
 from flask import redirect
@@ -32,7 +33,9 @@ def upload():
             return jsonify({"message": "no file"})
         file = request.files['file']
         if file:
-            filename = secure_filename(file.filename)
+            timestr = time.strftime('%Y%m%d%H%M%S')
+            ext = secure_filename(file.filename).split('.')[-1]
+            filename = f'upload-{timestr}.{ext}'
             s3_client().put_object(Bucket=BUCKET,
                                    Key=filename,
                                    Body=file)
