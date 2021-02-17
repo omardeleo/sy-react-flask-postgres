@@ -17,9 +17,11 @@ function UploadCard(props) {
         (result) => {
           setIsLoaded(true);
           const bucket = result['Name'];
-          const filenames = result['Contents']
-            .map(file => `${bucket}/${file['Key']}`)
-            .reverse();
+          const filenames = result['Contents'] ?
+            result['Contents']
+              .map(file => `${bucket}/${file['Key']}`)
+              .reverse() :
+            [];
           setData(filenames);
         },
         (error) => {
