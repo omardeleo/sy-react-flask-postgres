@@ -78,12 +78,12 @@ function ConnectCard(props) {
       <p>Replace the code below:</p>
       <ResponseBlock
         language="language-js"
-        code="35 |  jsonify(response=response)"
+        code="35 |  return jsonify(response=response)"
       />
       <p>with:</p>
       <ResponseBlock
         language="language-js"
-        code='35 |  jsonify(response="I just updated the response message!")'
+        code='35 |  return jsonify(response="I just updated the response message!")'
       />
       <br></br>
       <p>The function that <b>resets the ping counter</b> is located in <code>`backend/src/models/counter.py`:</code></p>
