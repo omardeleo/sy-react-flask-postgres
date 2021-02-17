@@ -13,3 +13,7 @@ class Counter(BaseModel):
         if self.count > self.RESET_THRESHOLD:
             self.count = 0
         self.save()
+
+    def reset(self):
+        self.count = 0
+        self.save()
