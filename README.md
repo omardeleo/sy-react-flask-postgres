@@ -9,9 +9,10 @@ and [Shipyard](https://shipyard.build) out of the box.
 - [Material-UI](https://github.com/mui-org/material-ui) - React components for faster and simpler web development
 - [Flask](https://github.com/pallets/flask) - lightweight WSGI web application framework
 - [Jinja](https://github.com/pallets/jinja) + [Bootstrap](https://pythonhosted.org/Flask-Bootstrap/) (from CDN)
-- [uWSGI](https://github.com/unbit/uwsgi) entrypoint
-- [Celery](https://github.com/celery/celery) (with example heartbeat task configured)
-- [Flask-SQLAlchemy](https://github.com/pallets/flask-sqlalchemy)
+- [uWSGI](https://github.com/unbit/uwsgi) - entrypoint
+- [Celery](https://github.com/celery/celery) (with example heartbeat task configured) - distributed task queue
+- [Flask-SQLAlchemy](https://github.com/pallets/flask-sqlalchemy) - ORM toolkit
+- [LocalStack](https://github.com/localstack/localstack) - fully functional local AWS cloud stack
 
 ## Dependencies
 
@@ -22,4 +23,5 @@ and [Shipyard](https://shipyard.build) out of the box.
 
 - Run `make develop` at the root of this project.
 - Visit the app at http://localhost:3000.
+- Visit http://localhost:8080/api/v1/files to list objects in LocalStack s3 bucket.
 - Make your code changes! The app will reload whenever you save.
