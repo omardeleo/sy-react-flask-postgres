@@ -1,9 +1,10 @@
 import {
   Box,
+  Button,
   Card,
+  Link,
 } from '@material-ui/core';
 import Prism from 'prismjs';
-
 import React, { useEffect, useState } from "react";
 
 import flaskLogo from './flask.png';
@@ -48,9 +49,11 @@ function ConnectCard(props) {
 
   useEffect(() => fetchData(), []);
 
-  const codeBlock =`17 |    def reset(self):
-18 |       self.count = 0
-19 |       self.save()`
+  const codeBlock =`20 |    @blueprint.route('/api/v1/reset/')
+21 |    def reset():
+22 |        counter = Counter.get_create(label='Test')
+23 |        counter.reset()
+24 |        return jsonify(response=counter.count)`
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -66,27 +69,21 @@ function ConnectCard(props) {
         <img width="75px" height="100%" src={flaskLogo} alt="Flask Logo"/>
       </Box>
       <p>This React frontend is connected to a Flask server. Below is the response message we receive when we ping the server:</p>
-      <p className={classes.response}>
-        {data.response}
-      </p>
+<pre className={classes.pre}><p className={classes.response}>> {data.response}</p></pre>
+      
       <p>The server ping count is stored to the database. Click below to <b>reset the counter:</b></p>
       <Box display="flex" justifyContent="center">
-        <button onClick={resetCounter}>Reset Ping Counter</button>
+        <Button
+          variant="contained"
+          size="small"
+          className={classes.contained}
+          onClick={resetCounter}
+        >
+          Reset Counter
+        </Button>
       </Box>
-      <br></br>
-      <p>Update <code>`backend/src/routes/counter.py`</code>, save the file, then refresh this page to <b>see a new response message.</b></p>
-      <p>Replace the code below:</p>
-      <ResponseBlock
-        language="language-js"
-        code="35 |  return jsonify(response=response)"
-      />
-      <p>with:</p>
-      <ResponseBlock
-        language="language-js"
-        code='35 |  return jsonify(response="I just updated the response message!")'
-      />
-      <br></br>
-      <p>The function that <b>resets the ping counter</b> is located in <code>`backend/src/models/counter.py`:</code></p>
+      <p>The <b>endpoint</b> that resets the ping counter is located in <code><Link className={classes.link} href={`${process.env.REACT_APP_STARTER_REPO_URL}backend/src/routes/counter.py#L20-L24`} target="_blank">`backend/src/routes/counter.py`
+</Link></code>:</p>
       <ResponseBlock
         language="language-js"
         code={codeBlock}
