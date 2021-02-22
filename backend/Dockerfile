@@ -18,17 +18,6 @@ RUN apk add --update --no-cache \
       build-base \
       postgresql-dev
 
-# Install watchman
-#ENV WATCHMAN_VERSION v4.9.0
-#RUN cd /tmp && git clone https://github.com/facebook/watchman.git && \
-    #cd watchman && \
-    #git checkout $WATCHMAN_VERSION && \
-    #./autogen.sh && \
-    #./configure --without-python  --without-pcre --enable-lenient && \
-    #make && \
-    #make install && \
-    #cd .. && rm -rf watchman
-
 # cryptography module incompatibility with PEP517
 # https://github.com/pyca/cryptography/issues/5771
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
