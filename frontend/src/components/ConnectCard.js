@@ -102,7 +102,7 @@ function ConnectCard(props) {
               href={`${process.env.REACT_APP_STARTER_REPO_URL}backend/src/routes/counter.py#L23-L27`}
               target="_blank"
             >
-              `backend/src/routes/counter.py`
+              backend/src/routes/counter.py
             </Link>
           </code>
           :
