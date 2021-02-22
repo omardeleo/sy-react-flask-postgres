@@ -1,5 +1,4 @@
 import uuid
-import os
 import time
 import localstack_client.session
 

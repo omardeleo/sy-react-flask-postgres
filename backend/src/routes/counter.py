@@ -1,6 +1,5 @@
 from flask import (
     Blueprint,
-    render_template,
     jsonify
 )
 
@@ -11,11 +10,15 @@ import datetime
 
 blueprint = Blueprint('counter', __name__)
 
+RESPONSE_TEMPLATE = "Flask server running on port 8080. Pinged {count} {times}, \
+most recently on {date}."
+
 
 @blueprint.route('/')
 def index():
     response = "Flask server"
     return jsonify(response=response)
+
 
 @blueprint.route('/api/v1/reset/')
 def reset():
@@ -23,13 +26,16 @@ def reset():
     counter.reset()
     return jsonify(response=counter.count)
 
+
 @blueprint.route('/api/v1/')
 def api():
     counter = Counter.get_create(label='Test')
     counter.increment()
     date = datetime.datetime.now()
     dateStr = date.strftime('%c')
-    response = f"""Flask server running on port 8080.
-Pinged {counter.count} {"time" if counter.count == 1 else "times"}, most recently on {dateStr}."""
-
+    times = "time" if counter.count == 1 else "times"
+    response = RESPONSE_TEMPLATE.format(
+        count=counter.count,
+        times=times,
+        date=dateStr)
     return jsonify(response=response)
