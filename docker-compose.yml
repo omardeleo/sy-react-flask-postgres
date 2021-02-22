@@ -72,8 +72,7 @@ services:
     volumes:
       - 'localstack:/tmp/localstack'
     ports:
-      - '4566:4566'
-      - '4571:4571'
+      - '4566'
 
 volumes:
   postgres:
