@@ -29,7 +29,7 @@ def files():
 def upload():
     if request.method == 'POST':
         if 'file' not in request.files:
-            return jsonify({"message": "no file"})
+            return jsonify({'message': 'no file'})
         file = request.files['file']
         if file:
             timestr = time.strftime('%Y%m%d%H%M%S')

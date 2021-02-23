@@ -10,13 +10,13 @@ import datetime
 
 blueprint = Blueprint('counter', __name__)
 
-RESPONSE_TEMPLATE = "Flask server running on port 8080. Pinged {count} {times}, \
-most recently on {date}."
+RESPONSE_TEMPLATE = 'Flask server running on port 8080. Pinged {count} {times}, \
+most recently on {date}.'
 
 
 @blueprint.route('/')
 def index():
-    response = "Flask server"
+    response = 'Flask server'
     return jsonify(response=response)
 
 
@@ -33,7 +33,7 @@ def api():
     counter.increment()
     date = datetime.datetime.now()
     dateStr = date.strftime('%c')
-    times = "time" if counter.count == 1 else "times"
+    times = 'time' if counter.count == 1 else 'times'
     response = RESPONSE_TEMPLATE.format(
         count=counter.count,
         times=times,
