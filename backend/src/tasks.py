@@ -30,16 +30,16 @@ def make_celery(app):
 class Tasks:
 
     # How to add new tasks:
-    # - Create the static method (like `do_something()`)
+    # - Create the static method (like `ping_once()`)
     # - Add the corresponding bind in the bind() method
 
     @classmethod
     def bind(cls, celery):
         """Bind the Celery app to all the tasks"""
         # NOTE: DONT
-        cls.do_something = celery.task(cls.do_something)
+        cls.ping_once = celery.task(cls.ping_once)
 
     @staticmethod
-    def do_something(amount):
+    def ping_once(amount):
         for counter in Counter.list():
             counter.increment(amount=amount)

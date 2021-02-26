@@ -9,6 +9,8 @@ services:
     environment:
       CI: 'true'
       DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
+    env_file:
+      - frontend/frontend.env
     volumes:
       - './frontend/src:/app/src'
       - './frontend/public:/app/public'
@@ -23,6 +25,7 @@ services:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
       FLASK_DEBUG: '1'
+      LOCALSTACK_HOST: 'localstack'
     volumes:
       - './backend/filesystem/entrypoints:/entrypoints:ro'
       - './backend/migrations:/srv/migrations'
@@ -38,6 +41,7 @@ services:
       DATABASE_URL: 'postgres://obscure-user:obscure-password@postgres/app'
       DEV: ${DEV}
       FLASK_DEBUG: '1'
+      LOCALSTACK_HOST: 'localstack'
     command: '/entrypoints/worker.sh'
     volumes:
       - './backend/filesystem/entrypoints:/entrypoints:ro'
@@ -61,5 +65,15 @@ services:
     ports:
       - '6379'
 
+  localstack:
+    image: 'localstack/localstack'
+    environment:
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - 'localstack:/tmp/localstack'
+    ports:
+      - '4566'
+
 volumes:
   postgres:
+  localstack:

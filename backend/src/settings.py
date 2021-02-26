@@ -26,9 +26,9 @@ class Settings:
     CELERY_RESULT_BACKEND = REDIS_URL
     CELERY_CONFIG = {
         'beat_schedule': {
-            'do_something': {
-                'task': 'src.tasks.do_something',
-                'args': (10,),
+            'ping_once': {
+                'task': 'src.tasks.ping_once',
+                'args': (1,),
                 'schedule': 5.0,
             },
         }
